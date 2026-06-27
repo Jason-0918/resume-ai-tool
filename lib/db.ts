@@ -1,7 +1,7 @@
 import { PrismaClient } from "./generated/prisma/client";
-import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaNeon } from "@prisma/adapter-neon";
 
-/** Prisma 客户端单例（懒加载，避免构建时连接数据库） */
+/** Prisma 客户端单例（懒加载，适配 Vercel Serverless） */
 const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
 
 /** 获取或创建 Prisma 客户端 */
@@ -15,10 +15,7 @@ function getPrismaClient(): PrismaClient {
     );
   }
 
-  const adapter = new PrismaPg({
-    connectionString: databaseUrl,
-  });
-
+  const adapter = new PrismaNeon({ connectionString: databaseUrl });
   const client = new PrismaClient({ adapter });
 
   if (process.env.NODE_ENV !== "production") {

@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["bcryptjs", "pg"],
+  serverExternalPackages: ["bcryptjs", "@neondatabase/serverless"],
 };
 
 export default nextConfig;
