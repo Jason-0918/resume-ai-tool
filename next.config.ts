@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
-  serverExternalPackages: ["bcryptjs", "pg", "@prisma/adapter-pg"],
+  serverExternalPackages: ["bcryptjs", "pg"],
 };
 
 export default nextConfig;
